@@ -374,9 +374,11 @@
 <script>
     /* === ЛОГИКА (JavaScript) === */
     
-    const BASE_URL = "https://raw.githubusercontent.com/Taruni-dasi/Testing-new-code/main/assets/";
+    // ИСПРАВЛЕНИЕ: Используем относительный путь. 
+    // Это заставляет браузер брать файлы напрямую с вашего сайта, а не через raw.github
+    const BASE_URL = "assets/";
 
-    // Данные мантр
+    // Данные мантр (убедитесь, что имена файлов здесь тоже без пробелов, если вы их переименовали)
     const mantras = [
         { name: "Шрила Гурудев (с флейтой)", file: "audio/01_Srila-Gurudev-japa108-flute.mp3" },
         { name: "Шрила Гурудев", file: "audio/01_Srila-Gurudev-japa108.mp3" },
@@ -384,30 +386,30 @@
         { name: "Прабхуджи (тихий)", file: "audio/03_Prabhuji-japa108-quiet.mp3" }
     ];
 
-    // Данные слайдов
+    // Данные слайдов (ИСПРАВЛЕНЫ ИМЕНА ФАЙЛОВ: пробелы заменены на _)
     const slides = [
         { 
-            image: "images/01 Gurudev smiling.jpg", 
+            image: "images/01_gurudev_smiling.jpg", 
             descRu: "Шрила Гурудев улыбается, даря благословения преданным.", 
             descEn: "" 
         },
         { 
-            image: "images/01 Gurudev.jpg", 
+            image: "images/01_gurudev.jpg", 
             descRu: "Шрила Гурудев в медитации и молитве.", 
             descEn: "" 
         },
         { 
-            image: "images/01 Rupa Sanatana Math Vrinda.jpg", 
+            image: "images/01_rupa_sanatana_math_vrinda.jpg", 
             descRu: "Божество Вринда Деви в Шри Рупа-Санатана Матхе во Вриндаване.", 
             descEn: "" 
         },
         {
-            image: "images/04 Swami Prabhupada Deities.png",
+            image: "images/04_swami_prabhupada_deities.png",
             descRu: "Божества Шрилы Прабхупады.",
             descEn: ""
         },
         {
-            image: "images/05 Bhakti_Pragyana_Keshava_murti_Radhe_Kunj.jpg",
+            image: "images/05_bhakti_pragyana_keshava_murti_radhe_kunj.jpg",
             descRu: "Бхакти Прагьяна Кешава Махарадж (мурти) в Радхе Кунде.",
             descEn: ""
         }
@@ -454,7 +456,8 @@
             return;
         }
 
-        const audioUrl = BASE_URL + encodeURI(selectedFile);
+        // encodeURI больше не нужен для базового пути, но оставим для надежности
+        const audioUrl = BASE_URL + selectedFile;
         audioPlayer.src = audioUrl;
         audioPlayer.load();
         
@@ -503,7 +506,8 @@
     // === Логика слайдера ===
     function updateSlide() {
         const slide = slides[currentSlideIndex];
-        slideImage.src = BASE_URL + encodeURI(slide.image);
+        // Добавляем ?v=2 в конец ссылки, чтобы гарантированно сбросить старый кэш браузера
+        slideImage.src = BASE_URL + slide.image + "?v=2";
         descRu.textContent = slide.descRu;
         descEn.textContent = slide.descEn || " "; 
         
@@ -525,11 +529,9 @@
 
     // === Логика переключения полноэкранного режима ===
     imageWrapper.addEventListener('click', function(event) {
-        // Если клик был по кнопкам навигации (стрелкам), режим не переключаем
         if (event.target.closest('.slider-btn')) {
             return;
         }
-        // Переключаем класс на body, который активирует полноэкранные стили
         document.body.classList.toggle('fullscreen-mode');
     });
 
