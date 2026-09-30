@@ -1,15 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <!-- Добавлен maximum-scale и user-scalable=no для предотвращения случайного зума на телефоне -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Джапа-медитация</title>
     <style>
-        /* === СТИЛИ (CSS) === */
         :root {
-            --primary-color: #ff9933; /* Шафрановый цвет */
+            --primary-color: #ff9933;
             --primary-hover: #e68a00;
             --bg-color: #fdfbf7;
             --card-bg: #ffffff;
@@ -50,7 +47,6 @@
             margin-top: 0;
         }
 
-        /* Секции */
         .section {
             margin-bottom: 30px;
             padding-bottom: 20px;
@@ -87,7 +83,6 @@
             border-color: var(--primary-color);
         }
 
-        /* Аудио плеер */
         .audio-controls {
             display: flex;
             flex-direction: column;
@@ -148,7 +143,6 @@
             cursor: pointer;
         }
 
-        /* Слайдер изображений */
         .slider-container {
             position: relative;
             margin: 10px 0;
@@ -164,9 +158,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Улучшает реакцию на касания и отключает двойной тап для зума */
-            touch-action: manipulation; 
-            cursor: pointer; 
+            touch-action: manipulation;
+            cursor: pointer;
         }
 
         .slide-image {
@@ -194,7 +187,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transition: background-color 0.3s, transform 0.1s, opacity 0.3s;
             padding: 0;
-            z-index: 10; /* Чтобы кнопки были поверх изображения */
+            z-index: 10;
         }
 
         .slider-btn:hover {
@@ -230,7 +223,7 @@
             font-size: 14px;
             color: var(--text-secondary);
             font-style: italic;
-            min-height: 20px; 
+            min-height: 20px;
         }
 
         .status-text {
@@ -240,14 +233,11 @@
             min-height: 20px;
         }
 
-        /* ========================================= */
-        /* === ПОЛНОЭКРАННЫЙ РЕЖИМ (ДЛЯ ТЕЛЕФОНА) === */
-        /* ========================================= */
         body.fullscreen-mode {
-            background-color: #000000; /* Черный фон для лучшей концентрации */
+            background-color: #000000;
             padding: 0;
             margin: 0;
-            overflow: hidden; /* Блокируем прокрутку страницы */
+            overflow: hidden;
         }
 
         body.fullscreen-mode .container {
@@ -263,9 +253,8 @@
             flex-direction: column;
         }
 
-        /* Скрываем все лишние элементы в полноэкранном режиме */
         body.fullscreen-mode h1,
-        body.fullscreen-mode .section:last-child, /* Аудио плеер */
+        body.fullscreen-mode .section:last-child,
         body.fullscreen-mode .description,
         body.fullscreen-mode label {
             display: none !important;
@@ -293,7 +282,7 @@
             width: 100vw;
             height: 100vh;
             border-radius: 0;
-            background-color: #000; /* Черный фон для сохранения пропорций без обрезки */
+            background-color: #000;
             aspect-ratio: unset;
         }
 
@@ -302,27 +291,23 @@
             height: 100vh;
             max-width: 100vw;
             max-height: 100vh;
-            /* contain показывает изображение целиком с черными полосами по краям (если пропорции не совпадают). 
-               Если хотите, чтобы изображение обрезалось, но заполняло весь экран без полос, замените на 'cover' */
-            object-fit: contain; 
+            object-fit: contain;
         }
 
-        /* Делаем стрелки больше и удобнее для пальцев в полноэкранном режиме */
         body.fullscreen-mode .slider-btn {
             width: 60px;
             height: 60px;
             font-size: 28px;
-            opacity: 0.5; /* Полупрозрачные, чтобы не отвлекать */
+            opacity: 0.5;
         }
 
         body.fullscreen-mode .slider-btn:hover,
         body.fullscreen-mode .slider-btn:active {
-            opacity: 1; /* При нажатии становятся яркими */
+            opacity: 1;
         }
 
         body.fullscreen-mode .prev-btn { left: 10px; }
         body.fullscreen-mode .next-btn { right: 10px; }
-
     </style>
 </head>
 <body>
@@ -330,7 +315,6 @@
 <div class="container">
     <h1>🕉 Джапа-медитация</h1>
 
-    <!-- 1. Слайдер изображений -->
     <div class="section">
         <label>Образ для медитации и молитвы</label>
         <div class="slider-container">
@@ -346,7 +330,6 @@
         </div>
     </div>
 
-    <!-- 2. Выбор мантры и Аудио плеер -->
     <div class="section">
         <label for="mantraSelect">Выберите мантру для повторения:</label>
         <select id="mantraSelect">
@@ -365,20 +348,14 @@
                 <span>🔊</span>
             </div>
         </div>
-        
-        <!-- Скрытый аудио элемент -->
+
         <audio id="audioPlayer"></audio>
     </div>
 </div>
 
 <script>
-    /* === ЛОГИКА (JavaScript) === */
-    
-    // ИСПРАВЛЕНИЕ: Используем относительный путь. 
-    // Это заставляет браузер брать файлы напрямую с вашего сайта, а не через raw.github
     const BASE_URL = "assets/";
 
-    // Данные мантр (убедитесь, что имена файлов здесь тоже без пробелов, если вы их переименовали)
     const mantras = [
         { name: "Шрила Гурудев (с флейтой)", file: "audio/01_Srila-Gurudev-japa108-flute.mp3" },
         { name: "Шрила Гурудев", file: "audio/01_Srila-Gurudev-japa108.mp3" },
@@ -386,22 +363,21 @@
         { name: "Прабхуджи (тихий)", file: "audio/03_Prabhuji-japa108-quiet.mp3" }
     ];
 
-    // Данные слайдов (ИСПРАВЛЕНЫ ИМЕНА ФАЙЛОВ: пробелы заменены на _)
     const slides = [
-        { 
-            image: "images/01_gurudev_smiling.jpg", 
-            descRu: "Шрила Гурудев улыбается, даря благословения преданным.", 
-            descEn: "" 
+        {
+            image: "images/01_gurudev_smiling.jpg",
+            descRu: "Шрила Гурудев улыбается, даря благословения преданным.",
+            descEn: ""
         },
-        { 
-            image: "images/01_gurudev.jpg", 
-            descRu: "Шрила Гурудев в медитации и молитве.", 
-            descEn: "" 
+        {
+            image: "images/01_gurudev.jpg",
+            descRu: "Шрила Гурудев в медитации и молитве.",
+            descEn: ""
         },
-        { 
-            image: "images/01_rupa_sanatana_math_vrinda.jpg", 
-            descRu: "Божество Вринда Деви в Шри Рупа-Санатана Матхе во Вриндаване.", 
-            descEn: "" 
+        {
+            image: "images/01_rupa_sanatana_math_vrinda.jpg",
+            descRu: "Божество Вринда Деви в Шри Рупа-Санатана Матхе во Вриндаване.",
+            descEn: ""
         },
         {
             image: "images/04_swami_prabhupada_deities.png",
@@ -417,14 +393,13 @@
 
     let currentSlideIndex = 0;
 
-    // Элементы DOM
     const mantraSelect = document.getElementById('mantraSelect');
     const audioPlayer = document.getElementById('audioPlayer');
     const playPauseBtn = document.getElementById('playPauseBtn');
     const stopBtn = document.getElementById('stopBtn');
     const volumeSlider = document.getElementById('volumeSlider');
     const statusText = document.getElementById('statusText');
-    
+
     const slideImage = document.getElementById('slideImage');
     const descRu = document.getElementById('descRu');
     const descEn = document.getElementById('descEn');
@@ -434,7 +409,7 @@
 
     function init() {
         mantraSelect.innerHTML = '<option value="">-- Нажмите для выбора --</option>';
-        
+
         mantras.forEach((mantra) => {
             const option = document.createElement('option');
             option.value = mantra.file;
@@ -444,7 +419,6 @@
         updateSlide();
     }
 
-    // === Логика аудио ===
     mantraSelect.addEventListener('change', function() {
         const selectedFile = this.value;
         if (selectedFile === "") {
@@ -456,18 +430,17 @@
             return;
         }
 
-        // encodeURI больше не нужен для базового пути, но оставим для надежности
         const audioUrl = BASE_URL + selectedFile;
         audioPlayer.src = audioUrl;
         audioPlayer.load();
-        
+
         const selectedOption = this.options[this.selectedIndex];
         statusText.textContent = `Готово к воспроизведению: ${selectedOption.textContent}`;
-        
+
         playPauseBtn.disabled = false;
         stopBtn.disabled = false;
         volumeSlider.disabled = false;
-        
+
         playPauseBtn.innerHTML = "▶ Играть";
     });
 
@@ -489,7 +462,7 @@
 
     stopBtn.addEventListener('click', function() {
         audioPlayer.pause();
-        audioPlayer.currentTime = 0; 
+        audioPlayer.currentTime = 0;
         playPauseBtn.innerHTML = "▶ Играть";
         statusText.textContent = "Остановлено";
     });
@@ -499,18 +472,16 @@
     });
 
     audioPlayer.addEventListener('ended', function() {
-        audioPlayer.currentTime = 0; 
-        audioPlayer.play();          
+        audioPlayer.currentTime = 0;
+        audioPlayer.play();
     });
 
-    // === Логика слайдера ===
     function updateSlide() {
         const slide = slides[currentSlideIndex];
-        // Добавляем ?v=2 в конец ссылки, чтобы гарантированно сбросить старый кэш браузера
-        slideImage.src = BASE_URL + slide.image + "?v=2";
+        slideImage.src = BASE_URL + slide.image;
         descRu.textContent = slide.descRu;
-        descEn.textContent = slide.descEn || " "; 
-        
+        descEn.textContent = slide.descEn || " ";
+
         slideImage.style.opacity = 0;
         setTimeout(() => {
             slideImage.style.opacity = 1;
@@ -527,7 +498,6 @@
         updateSlide();
     });
 
-    // === Логика переключения полноэкранного режима ===
     imageWrapper.addEventListener('click', function(event) {
         if (event.target.closest('.slider-btn')) {
             return;
@@ -535,7 +505,6 @@
         document.body.classList.toggle('fullscreen-mode');
     });
 
-    // Запуск приложения
     init();
 </script>
 
