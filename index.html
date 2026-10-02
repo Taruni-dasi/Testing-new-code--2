@@ -16,7 +16,6 @@
             --text-secondary: #666666;
             --border-radius: 16px;
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #fdfbf7 0%, #f4e4c1 100%);
@@ -29,7 +28,6 @@
             align-items: flex-start;
             transition: background-color 0.3s ease;
         }
-
         .container {
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
@@ -40,7 +38,6 @@
             text-align: center;
             transition: all 0.3s ease;
         }
-
         h1 {
             color: var(--primary-color);
             margin-bottom: 25px;
@@ -48,26 +45,22 @@
             font-weight: 600;
             margin-top: 0;
         }
-
         .section {
             margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 1px solid #eee;
         }
-
         .section:last-child {
             border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
         }
-
         label {
             display: block;
             margin-bottom: 10px;
             font-weight: 600;
             color: var(--text-secondary);
         }
-
         select {
             width: 100%;
             padding: 12px;
@@ -79,12 +72,10 @@
             transition: border-color 0.3s;
             box-sizing: border-box;
         }
-
         select:focus {
             outline: none;
             border-color: var(--primary-color);
         }
-
         .audio-controls {
             display: flex;
             flex-direction: column;
@@ -92,13 +83,11 @@
             align-items: center;
             margin-top: 20px;
         }
-
         .buttons-row {
             display: flex;
             gap: 15px;
             justify-content: center;
         }
-
         button {
             background-color: var(--primary-color);
             color: white;
@@ -113,24 +102,19 @@
             align-items: center;
             gap: 8px;
         }
-
         button:hover {
             background-color: var(--primary-hover);
         }
-
         button:active {
             transform: scale(0.95);
         }
-
         button.secondary {
             background-color: #e0e0e0;
             color: #333;
         }
-
         button.secondary:hover {
             background-color: #d0d0d0;
         }
-
         .volume-control {
             display: flex;
             align-items: center;
@@ -138,18 +122,15 @@
             width: 100%;
             max-width: 250px;
         }
-
         input[type="range"] {
             flex-grow: 1;
             accent-color: var(--primary-color);
             cursor: pointer;
         }
-
         .slider-container {
             position: relative;
             margin: 10px 0;
         }
-
         .image-wrapper {
             position: relative;
             width: 100%;
@@ -163,14 +144,12 @@
             touch-action: manipulation;
             cursor: pointer;
         }
-
         .slide-image {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
             transition: opacity 0.3s ease;
         }
-
         .slider-btn {
             position: absolute;
             top: 50%;
@@ -191,19 +170,15 @@
             padding: 0;
             z-index: 10;
         }
-
         .slider-btn:hover {
             background-color: white;
             transform: translateY(-50%) scale(1.05);
         }
-
         .slider-btn:active {
             transform: translateY(-50%) scale(0.95);
         }
-
         .prev-btn { left: 12px; }
         .next-btn { right: 12px; }
-
         .description {
             margin-top: 20px;
             padding: 15px 20px;
@@ -212,7 +187,6 @@
             text-align: left;
             border-left: 4px solid var(--primary-color);
         }
-
         .desc-ru {
             font-size: 16px;
             color: var(--text-color);
@@ -220,28 +194,24 @@
             line-height: 1.5;
             font-weight: 500;
         }
-
         .desc-en {
             font-size: 14px;
             color: var(--text-secondary);
             font-style: italic;
             min-height: 20px;
         }
-
         .status-text {
             font-size: 14px;
             color: var(--text-secondary);
             margin-top: 10px;
             min-height: 20px;
         }
-
         body.fullscreen-mode {
             background-color: #000000;
             padding: 0;
             margin: 0;
             overflow: hidden;
         }
-
         body.fullscreen-mode .container {
             max-width: 100%;
             width: 100vw;
@@ -254,14 +224,12 @@
             display: flex;
             flex-direction: column;
         }
-
         body.fullscreen-mode h1,
         body.fullscreen-mode .section:last-child,
         body.fullscreen-mode .description,
         body.fullscreen-mode label {
             display: none !important;
         }
-
         body.fullscreen-mode .section:first-child {
             margin: 0;
             padding: 0;
@@ -272,14 +240,12 @@
             align-items: center;
             justify-content: center;
         }
-
         body.fullscreen-mode .slider-container {
             margin: 0;
             width: 100vw;
             height: 100vh;
             position: relative;
         }
-
         body.fullscreen-mode .image-wrapper {
             width: 100vw;
             height: 100vh;
@@ -287,7 +253,6 @@
             background-color: #000;
             aspect-ratio: unset;
         }
-
         body.fullscreen-mode .slide-image {
             width: 100vw;
             height: 100vh;
@@ -295,28 +260,23 @@
             max-height: 100vh;
             object-fit: contain;
         }
-
         body.fullscreen-mode .slider-btn {
             width: 60px;
             height: 60px;
             font-size: 28px;
             opacity: 0.5;
         }
-
         body.fullscreen-mode .slider-btn:hover,
         body.fullscreen-mode .slider-btn:active {
             opacity: 1;
         }
-
         body.fullscreen-mode .prev-btn { left: 10px; }
         body.fullscreen-mode .next-btn { right: 10px; }
     </style>
 </head>
 <body>
-
 <div class="container">
     <h1>🕉 Джапа-медитация</h1>
-
     <div class="section">
         <label>Образ для медитации и молитвы</label>
         <div class="slider-container">
@@ -331,14 +291,12 @@
             <div class="desc-en" id="descEn"></div>
         </div>
     </div>
-
     <div class="section">
         <label for="mantraSelect">Выберите мантру для повторения:</label>
         <select id="mantraSelect">
             <option value="">-- Нажмите для выбора --</option>
         </select>
         <div class="status-text" id="statusText">Мантра не выбрана</div>
-
         <div class="audio-controls">
             <div class="buttons-row">
                 <button id="playPauseBtn" disabled>▶ Играть</button>
@@ -350,79 +308,49 @@
                 <span>🔊</span>
             </div>
         </div>
-
         <audio id="audioPlayer"></audio>
     </div>
 </div>
-
 <script>
     const BASE_URL = "https://taruni-dasi.github.io/Testing-new-code/assets/";
-
     const mantras = [
         { name: "Шрила Гурудев (с флейтой)", file: "audio/01_Srila-Gurudev-japa108-flute.mp3" },
         { name: "Шрила Гурудев", file: "audio/01_Srila-Gurudev-japa108.mp3" },
         { name: "Шрила Прабхупада", file: "audio/02-Srila-Prabhupada-japa108.mp3" },
         { name: "Прабхуджи (тихий)", file: "audio/03_Prabhuji-japa108-quiet.mp3" }
     ];
-
     const slides = [
-        {
-            image: "images/01_gurudev_smiling.jpg",
-            descRu: "Шрила Гурудев улыбается, даря благословения преданным.",
-            descEn: ""
-        },
-        {
-            image: "images/01_gurudev.jpg",
-            descRu: "Шрила Гурудев в медитации и молитве.",
-            descEn: ""
-        },
-        {
-            image: "images/01_rupa_sanatana_math_vrinda.jpg",
-            descRu: "Божество Вринда Деви в Шри Рупа-Санатана Матхе во Вриндаване.",
-            descEn: ""
-        },
-        {
-            image: "images/04_swami_prabhupada_deities.png",
-            descRu: "Божества Шрилы Прабхупады.",
-            descEn: ""
-        },
-        {
-            image: "images/05_bhakti_pragyana_keshava_murti_radhe_kunj.jpg",
-            descRu: "Бхакти Прагьяна Кешава Махарадж (мурти) в Радхе Кунде.",
-            descEn: ""
-        }
+        { image: "images/01_gurudev_smiling.jpg", descRu: "Шрила Гурудев улыбается, даря благословения преданным.", descEn: "" },
+        { image: "images/01_gurudev.jpg", descRu: "Шрила Гурудев в медитации и молитве.", descEn: "" },
+        { image: "images/01_rupa_sanatana_math_vrinda.jpg", descRu: "Божество Вринда Деви в Шри Рупа-Санатана Матхе во Вриндаване.", descEn: "" },
+        { image: "images/04_swami_prabhupada_deities.png", descRu: "Божества Шрилы Прабхупады.", descEn: "" },
+        { image: "images/05_bhakti_pragyana_keshava_murti_radhe_kunj.jpg", descRu: "Бхакти Прагьяна Кешава Махарадж (мурти) в Радхе Кунде.", descEn: "" }
     ];
-
     let currentSlideIndex = 0;
-
     const mantraSelect = document.getElementById('mantraSelect');
     const audioPlayer = document.getElementById('audioPlayer');
     const playPauseBtn = document.getElementById('playPauseBtn');
     const stopBtn = document.getElementById('stopBtn');
     const volumeSlider = document.getElementById('volumeSlider');
     const statusText = document.getElementById('statusText');
-
     const slideImage = document.getElementById('slideImage');
     const descRu = document.getElementById('descRu');
     const descEn = document.getElementById('descEn');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const imageWrapper = document.getElementById('imageWrapper');
-
     function init() {
         mantraSelect.innerHTML = '<option value="">-- Нажмите для выбора --</option>';
-
-        mantras.forEach((mantra) => {
-            const option = document.createElement('option');
+        mantras.forEach(function(mantra) {
+            var option = document.createElement('option');
             option.value = mantra.file;
             option.textContent = mantra.name;
             mantraSelect.appendChild(option);
         });
         updateSlide();
     }
-
     mantraSelect.addEventListener('change', function() {
-        const selectedFile = this.value;
+        var selectedFile = this.value;
         if (selectedFile === "") {
             statusText.textContent = "Мантра не выбрана";
             playPauseBtn.disabled = true;
@@ -431,27 +359,21 @@
             audioPlayer.src = "";
             return;
         }
-
-        const audioUrl = BASE_URL + selectedFile;
-        audioPlayer.src = audioUrl;
+        audioPlayer.src = BASE_URL + selectedFile;
         audioPlayer.load();
-
-        const selectedOption = this.options[this.selectedIndex];
-        statusText.textContent = `Готово к воспроизведению: ${selectedOption.textContent}`;
-
+        var selectedOption = this.options[this.selectedIndex];
+        statusText.textContent = "Готово к воспроизведению: " + selectedOption.textContent;
         playPauseBtn.disabled = false;
         stopBtn.disabled = false;
         volumeSlider.disabled = false;
-
         playPauseBtn.innerHTML = "▶ Играть";
     });
-
     playPauseBtn.addEventListener('click', function() {
         if (audioPlayer.paused) {
-            audioPlayer.play().then(() => {
+            audioPlayer.play().then(function() {
                 playPauseBtn.innerHTML = "⏸ Пауза";
                 statusText.textContent = "Воспроизведение...";
-            }).catch(error => {
+            }).catch(function(error) {
                 console.error("Ошибка воспроизведения:", error);
                 statusText.textContent = "Ошибка воспроизведения.";
             });
@@ -461,68 +383,51 @@
             statusText.textContent = "На паузе";
         }
     });
-
     stopBtn.addEventListener('click', function() {
         audioPlayer.pause();
         audioPlayer.currentTime = 0;
         playPauseBtn.innerHTML = "▶ Играть";
         statusText.textContent = "Остановлено";
     });
-
     volumeSlider.addEventListener('input', function() {
         audioPlayer.volume = this.value;
     });
-
     audioPlayer.addEventListener('ended', function() {
         audioPlayer.currentTime = 0;
         audioPlayer.play();
     });
-
     function updateSlide() {
-        const slide = slides[currentSlideIndex];
+        var slide = slides[currentSlideIndex];
         slideImage.src = BASE_URL + slide.image;
         descRu.textContent = slide.descRu;
         descEn.textContent = slide.descEn || " ";
-
         slideImage.style.opacity = 0;
-        setTimeout(() => {
-            slideImage.style.opacity = 1;
-        }, 50);
+        setTimeout(function() { slideImage.style.opacity = 1; }, 50);
     }
-
     prevBtn.addEventListener('click', function() {
         currentSlideIndex = (currentSlideIndex === 0) ? slides.length - 1 : currentSlideIndex - 1;
         updateSlide();
     });
-
     nextBtn.addEventListener('click', function() {
         currentSlideIndex = (currentSlideIndex === slides.length - 1) ? 0 : currentSlideIndex + 1;
         updateSlide();
     });
-
     imageWrapper.addEventListener('click', function(event) {
-        if (event.target.closest('.slider-btn')) {
-            return;
-        }
+        if (event.target.closest('.slider-btn')) { return; }
         document.body.classList.toggle('fullscreen-mode');
     });
-
     init();
 </script>
-
 <script>
     if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js')
-                .then(registration => {
-                    console.log('Service Worker зарегистрирован:', registration.scope);
-                })
-                .catch(error => {
-                    console.log('Ошибка регистрации Service Worker:', error);
-                });
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('./sw.js').then(function(reg) {
+                console.log('SW registered:', reg.scope);
+            }).catch(function(err) {
+                console.log('SW error:', err);
+            });
         });
     }
 </script>
-
 </body>
 </html>
