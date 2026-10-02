@@ -1,7 +1,7 @@
 {
   "name": "Джапа-медитация",
   "short_name": "Джапа",
-  "start_url": "/Testing-new-code--2/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#fdfbf7",
   "theme_color": "#ff9933",
@@ -9,8 +9,15 @@
   "icons": [
     {
       "src": "https://taruni-dasi.github.io/Testing-new-code/assets/images/01_gurudev.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://taruni-dasi.github.io/Testing-new-code/assets/images/01_gurudev.jpg",
       "sizes": "512x512",
-      "type": "image/jpeg"
+      "type": "image/jpeg",
+      "purpose": "any maskable"
     }
   ]
 }
