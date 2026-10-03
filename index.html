@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Джапа-медитация</title>
     <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./assets/icon-192.png">
     <meta name="theme-color" content="#ff9933">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Джапа">
     <style>
         :root { --primary-color: #ff9933; --primary-hover: #e68a00; --bg-color: #fdfbf7; --card-bg: #ffffff; --text-color: #333333; --text-secondary: #666666; --border-radius: 16px; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #fdfbf7 0%, #f4e4c1 100%); color: var(--text-color); margin: 0; padding: 20px; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; transition: background-color 0.3s ease; }
@@ -77,6 +82,7 @@
             <div class="buttons-row">
                 <button id="playPauseBtn" disabled>▶ Играть</button>
                 <button id="stopBtn" class="secondary" disabled>⏹ Стоп</button>
+                <button id="installBtn" style="display:none;">📲 Установить</button>
             </div>
             <div class="volume-control">
                 <span>🔈</span>
@@ -161,9 +167,33 @@
 <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
-            navigator.serviceWorker.register('./sw.js').then(function(reg) {
+            // force:true обходит 24-часовой кэш самого sw.js и подтягивает свежую версию сразу после деплоя
+            navigator.serviceWorker.register('./sw.js', { scope: './', updateViaCache: 'none' }).then(function(reg) {
                 console.log('SW registered:', reg.scope);
-            }).catch(function(err) { console.log('SW error:', err); });
+                setInterval(function() { reg.update(); }, 60 * 60 * 1000); // проверка обновлений SW каждый час
+            }).catch(function(err) { console.error('SW registration failed:', err); });
+        });
+
+        // Кнопка «Установить приложение» (Chrome показывает подсказку только по запросу пользователя)
+        var deferredPrompt = null;
+        var installBtn = document.getElementById('installBtn');
+        window.addEventListener('beforeinstallprompt', function(e) {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (installBtn) installBtn.style.display = 'inline-flex';
+        });
+        if (installBtn) {
+            installBtn.addEventListener('click', function() {
+                if (!deferredPrompt) return;
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(function() {
+                    deferredPrompt = null;
+                    installBtn.style.display = 'none';
+                });
+            });
+        }
+        window.addEventListener('appinstalled', function() {
+            if (installBtn) installBtn.style.display = 'none';
         });
     }
 </script>
