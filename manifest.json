@@ -8,13 +8,13 @@
   "description": "Образы для медитации и молитвы с аудио",
   "icons": [
     {
-      "src": "https://taruni-dasi.github.io/Testing-new-code/assets/images/01_gurudev.jpg",
+      "src": "./assets/images/01_gurudev.jpg",
       "sizes": "192x192",
       "type": "image/jpeg",
       "purpose": "any maskable"
     },
     {
-      "src": "https://taruni-dasi.github.io/Testing-new-code/assets/images/01_gurudev.jpg",
+      "src": "./assets/images/01_gurudev.jpg",
       "sizes": "512x512",
       "type": "image/jpeg",
       "purpose": "any maskable"
