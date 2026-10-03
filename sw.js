@@ -1,18 +1,18 @@
-const CACHE_NAME = 'japa-meditation-offline-v2';
+const CACHE_NAME = 'japa-meditation-offline-v3';
 
 const urlsToCache = [
   './',
   './index.html',
   './manifest.json',
-  'https://taruni-dasi.github.io/Testing-new-code/assets/images/01_gurudev_smiling.jpg',
-  'https://taruni-dasi.github.io/Testing-new-code/assets/images/01_gurudev.jpg',
-  'https://taruni-dasi.github.io/Testing-new-code/assets/images/01_rupa_sanatana_math_vrinda.jpg',
-  'https://taruni-dasi.github.io/Testing-new-code/assets/images/04_swami_prabhupada_deities.png',
-  'https://taruni-dasi.github.io/Testing-new-code/assets/images/05_bhakti_pragyana_keshava_murti_radhe_kunj.jpg',
-  'https://taruni-dasi.github.io/Testing-new-code/assets/audio/01_Srila-Gurudev-japa108-flute.mp3',
-  'https://taruni-dasi.github.io/Testing-new-code/assets/audio/01_Srila-Gurudev-japa108.mp3',
-  'https://taruni-dasi.github.io/Testing-new-code/assets/audio/02-Srila-Prabhupada-japa108.mp3',
-  'https://taruni-dasi.github.io/Testing-new-code/assets/audio/03_Prabhuji-japa108-quiet.mp3'
+  './assets/images/01_gurudev_smiling.jpg',
+  './assets/images/01_gurudev.jpg',
+  './assets/images/01_rupa_sanatana_math_vrinda.jpg',
+  './assets/images/04_swami_prabhupada_deities.png',
+  './assets/images/05_bhakti_pragyana_keshava_murti_radhe_kunj.jpg',
+  './assets/audio/01_Srila-Gurudev-japa108-flute.mp3',
+  './assets/audio/01_Srila-Gurudev-japa108.mp3',
+  './assets/audio/02-Srila-Prabhupada-japa108.mp3',
+  './assets/audio/03_Prabhuji-japa108-quiet.mp3'
 ];
 
 self.addEventListener('install', event => {
