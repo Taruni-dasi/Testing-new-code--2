@@ -1,6 +1,7 @@
 {
   "id": "./",
   "name": "Джапа-медитация",
+  "id": "./",
   "short_name": "Джапа",
   "start_url": "./index.html",
   "scope": "./",
